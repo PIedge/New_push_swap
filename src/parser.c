@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 14:48:48 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 12:39:50 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 15:37:01 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,12 @@ static int	fill_up(t_stack *a, char **av)
 	return (1);
 }
 
-static int	check_bigger(char **av, int i, int j)
+static int	check_bigger(char **av, int j)
 {
-	char	*val;
-
 	if (ft_strlen(av[j]) < 10)
 		return (1);
 	if (ft_atol(av[j]) > INT_MAX || ft_atol(av[j]) < INT_MIN)
 		return (0);
-	i = -1;
-	if (av[j][0] == '-')
-		val = ft_itoa(INT_MIN);
-	else
-		val = ft_itoa(INT_MAX);
-	if (!val)
-		return (0);
-	while (val[++i])
-	{
-		if (av[j][i] > val[i])
-		{
-			free(val);
-			return (0);
-		}
-	}
 	return (1);
 }
 
@@ -101,7 +84,7 @@ static int	check_phony(char **av)
 		while (av[j][++i])
 			if (!(av[j][i] >= '0' && av[j][i] <= '9'))
 				return (0);
-		if (!check_bigger(av, i, j))
+		if (!check_bigger(av, j))
 			return (0);
 	}
 	return (1);
