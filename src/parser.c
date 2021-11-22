@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 14:48:48 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 15:37:01 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 15:46:37 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static int	check_phony(char **av)
 	while (av[++j])
 	{
 		i = -1;
+		if (!(av[j][0]))
+			return (0);
 		if (av[j][0] == '-')
 			++i;
 		while (av[j][++i])
