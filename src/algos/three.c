@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 16:40:34 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/21 13:25:32 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:49:50 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	under_three(t_stack *a, t_stack *b)
 {
-	if (a->stack[0] > a->stack[1])
+	if (a->size > 1 && a->stack[0] > a->stack[1])
 		swap(a, b, SA, 0);
 }
 

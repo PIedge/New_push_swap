@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:31:17 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 11:44:13 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:53:48 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ char	**refined_av(int ac, char **av)
 
 	if (ac == 2)
 	{
-		if (!(av[1][0]))
-			return (0);
 		av_refined = ft_split(av[1], ' ');
 		if (!av_refined)
 			return (0);
