@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:31:17 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 11:53:48 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:33:32 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	free_all(t_stack *a, t_stack *b, t_stack *c, char **av_refined)
 	free(a->stack);
 	free(b->stack);
 	free(c->stack);
-	ft_free_dtab(av_refined);
+	ft_free_dtab(av_refined, 0);
 	return (1);
 }
 

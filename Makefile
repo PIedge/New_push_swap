@@ -29,6 +29,7 @@ SRCS_UTL	=	$(D_UTL)/ft_itoa.c				\
 				$(D_UTL)/ft_split.c				\
 				$(D_UTL)/ft_substr.c			\
 				$(D_UTL)/visual.c				\
+				$(D_UTL)/ft_atol.c				\
 				
 SRCS_PUSH	=	$(D_PUSH)/main.c				\
 				$(D_PUSH)/algos/apply_mv.c		\

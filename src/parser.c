@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 14:48:48 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 12:09:32 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:39:50 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	check_bigger(char **av, int i, int j)
 
 	if (ft_strlen(av[j]) < 10)
 		return (1);
-	if (ft_strlen(av[j]) > 11 || (ft_strlen(av[j]) > 10 && av[j][0] != '-'))
+	if (ft_atol(av[j]) > INT_MAX || ft_atol(av[j]) < INT_MIN)
 		return (0);
 	i = -1;
 	if (av[j][0] == '-')
@@ -89,7 +89,7 @@ static int	check_phony(char **av)
 	int	i;
 	int	j;
 
-	j = 0;
+	j = -1;
 	if (!(av[0]) || !((av[0][0] >= '0' && av[0][0] <= '9') || \
 			av[0][0] == '-'))
 		return (0);
