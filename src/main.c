@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:31:17 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 10:29:55 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:44:13 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	free_all(t_stack *a, t_stack *b, t_stack *c, char **av_refined)
 	free(a->stack);
 	free(b->stack);
 	free(c->stack);
-	free(av_refined);
+	ft_free_dtab(av_refined);
 	return (1);
 }
 
@@ -46,6 +46,8 @@ char	**refined_av(int ac, char **av)
 
 	if (ac == 2)
 	{
+		if (!(av[1][0]))
+			return (0);
 		av_refined = ft_split(av[1], ' ');
 		if (!av_refined)
 			return (0);
@@ -57,7 +59,7 @@ char	**refined_av(int ac, char **av)
 			return (0);
 		i = -1;
 		while (++i < ac - 1)
-			av_refined[i] = av[i + 1];
+			av_refined[i] = ft_substr(av[i + 1], 0, ft_strlen(av[i + 1]));
 		av_refined[ac - 1] = NULL;
 	}
 	return (av_refined);
@@ -65,7 +67,7 @@ char	**refined_av(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	char	**av_refined;	
+	char	**av_refined;
 	t_stack	a;
 	t_stack	b;
 	t_stack	c;
@@ -78,8 +80,11 @@ int	main(int ac, char **av)
 	av_refined = refined_av(ac, av);
 	if (!av_refined)
 		return (write(STDOUT_FILENO, ERR_MSG, ft_strlen(ERR_MSG)));
-	if (!parser(av_refined, &a, &b, &c) && free_all(&a, &b, &c, av_refined))
+	if (!parser(av_refined, &a, &b, &c))
+	{
+		free_all(&a, &b, &c, av_refined);
 		return (write(STDOUT_FILENO, ERR_MSG, ft_strlen(ERR_MSG)));
+	}
 	push_swap(&a, &b, &c);
 	free_all(&a, &b, &c, av_refined);
 }
