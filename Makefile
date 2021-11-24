@@ -54,7 +54,9 @@ OBJS_MV		=	$(SRCS_MOVES:.c=.o)
 
 CC			=	clang
 
-FLAG		=	-Wall -Wextra -Werror -fsanitize=address
+FLAG		=	-Wall -Wextra -Werror
+
+VALF	=	--tool=memcheck --leak-check=full --leak-resolution=high --show-reachable=yes --track-origins=yes --log-file=valgrind_log
 
 PUSH		=	push_swap
 
@@ -86,5 +88,9 @@ re: fclean all ## remake everything from ground up
 
 help: ## you found me
 		@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?##"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+leaks:
+		valgrind ${VALF} ./${PUSH}
+		grep -A1 "valgrind" valgrind_log | grep ${PUSH} || echo -n
 
 .PHONY: all re clean fclean help

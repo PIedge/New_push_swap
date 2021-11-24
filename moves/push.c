@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 02:29:12 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 08:30:26 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:40:41 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	make_push(t_stack *from, t_stack *to)
 
 void	push(t_stack *from, t_stack *to, char *op)
 {
-	if (from->stack[0] > to->big || to->size == 0)
+	if (to->size == 0 || from->stack[0] > to->big)
 		to->big = from->stack[0];
-	if (from->stack[0] < to->small || to->size == 0)
+	if (to->size == 0 || from->stack[0] < to->small)
 		to->small = from->stack[0];
 	make_push(from, to);
 	write(STDOUT_FILENO, op, ft_strlen(op));

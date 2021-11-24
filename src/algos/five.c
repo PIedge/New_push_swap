@@ -6,7 +6,7 @@
 /*   By: tmerrien <tmerrien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:17:26 by tmerrien          #+#    #+#             */
-/*   Updated: 2021/11/22 10:40:51 by tmerrien         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:14:17 by tmerrien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	yup(t_stack *a, t_stack *b, t_stack *c)
 	range = new_range_five(i++, c);
 	while (not_sorted(a))
 	{
+		get_big_small(a);
+		get_big_small(b);
 		if (left_from_range(a, range))
 			range = new_range_five(i++, c);
 		find_next(a, &n, range);
